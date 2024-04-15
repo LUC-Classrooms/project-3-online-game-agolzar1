@@ -83,7 +83,6 @@ function gameOver() {
 }
 
 function mousePressed() {
-
  console.log("click!");
   if (gameState == "splash") {
     gameState = "play"; // go to play screen
