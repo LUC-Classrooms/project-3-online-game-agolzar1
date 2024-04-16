@@ -5,19 +5,33 @@
  * Use this template to get started creating a simple 2D game for the web using P5.js. 
  */
 
+var gameState = "splash";
+
+
 function setup() {
 
   createCanvas(600, 400);
 
-}
 
 function draw() {
   background(200);
   /* un-comment each line to see it work */
-  //splash(); // call the splash screen function (below)
-  //play(); // call the play screen function (below)
-  //gameOver(); // call the gameOver screen function (below)
-
+  splash(); // call the splash screen function (below)
+  play(); // call the play screen function (below)
+  gameOver(); // call the gameOver screen function (below)
+  switch(gameState){
+    case "splash" :
+      splash();
+      break;
+    case "play" :
+      play ();
+      break;
+    case "gameOver" :
+      gameOver ();
+      break;
+    default :
+    console.log ("no match! check your mousePressed function");
+  }
 }
 
 function splash() {
@@ -28,6 +42,7 @@ function splash() {
   text("Let's Play a Game!", width / 2, height / 2);
   textSize(12);
   text("(click the mouse to continue)", width / 2, height / 2 + 30);
+  
 }
 
 function play() {
@@ -37,20 +52,28 @@ function play() {
   textAlign(CENTER);
   textSize(16);
   text("This is where the Game happens", width / 2, height / 2);
+  }
 
 }
 
 function gameOver() {
   // this is what you see when the game ends
   background(0);
-  fill(255, 0, 0)
+  fill(255, 0, 0);
   textAlign(CENTER);
   textSize(16);
   text("Game Over!", width / 2, height / 2);
 }
 
 function mousePressed() {
-
-  console.log("click!");
-
+ console.log("click!");
+  if (gameState == "splash") {
+    gameState = "play"; // go to play screen
+  } else if (gameState == "play"){
+    gameState = "gameOver";
+  } else if (gameState == "gameOver"){
+    gameState = "splash";
+  }
+  console.log(gameState);
 }
+
