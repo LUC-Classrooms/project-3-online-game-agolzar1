@@ -12,7 +12,7 @@ var timer;
 function setup() {
 
   createCanvas(600, 400);
-  player1 = new Player (width/2, height * 7/8);
+  player1 = new Player(width/2, height * 7/8);
   console.log (player1);
 
   timer = new Timer (30000);
@@ -41,10 +41,10 @@ function draw() {
     console.log ("no match! check your mousePressed function");
   }
 
-}
-  splash(); // call the splash screen function (below)
-  play(); // call the play screen function (below)
-  gameOver(); // call the gameOver screen function (below)
+
+  //splash(); // call the splash screen function (below)
+  //play(); // call the play screen function (below)
+  //gameOver(); // call the gameOver screen function (below)
   switch(gameState){
     case "splash" :
       splash();
