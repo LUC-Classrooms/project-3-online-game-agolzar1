@@ -7,16 +7,21 @@
 
 var gameState = "splash";
 var player1;
-var timer;
+var timer; // game timer
+var testBox;
+var dropTimer;
+var presents = new Array (0); // empty array
 
 function setup() {
 
   createCanvas(600, 400);
   player1 = new Player(width/2, height * 7/8);
-  console.log (player1);
+  testBox = new Box (width/2, height/3);
+  
 
-  timer = new Timer (30000);
-  console.log(timer);
+  timer = new Timer (20000); // 20 seconds
+  
+  dropTimer = new Timer (1000); // 1 second
 
 }
 
@@ -68,6 +73,9 @@ function splash() {
   text("Let's Play a Game!", width / 2, height / 2);
   textSize(12);
   text("(click the mouse to continue)", width / 2, height / 2 + 30);
+  testBox.display();
+  testBox.spin();
+  
   
 }
 
@@ -78,7 +86,7 @@ function play() {
   textAlign(CENTER);
   textSize(16);
   text("This is where the Game happens", width / 2, height / 2);
-  player1.x = mouseX;
+  player1.x = mouseX; // move back and forth with mouse
   //player1.y = mouseY;
   player1.display();
   player1.move();
@@ -87,7 +95,25 @@ function play() {
     gameState = "gameOver";
   }
 
-  text("elapsed time: " + timer.elapsedTime, width/2, 100);
+  if(dropTimer.isFinished()){
+    let p = new Box(random(width), -30);
+    presents.push(p); // add p to array
+    dropTimer.start();
+  }
+    for(let i = 0; i < presents.length; i++){
+      presents [i].display();
+      presents[i].move();
+      presents [i].spin();
+
+      if (presents [i].y > height){
+        presents.splice(i, 1); // remove from array
+      }
+      let d = dist(presents [i].x, presents[i].y, player1.x, player1.y);
+      if(d < 50){
+        presents.splice(i, 1);
+      }
+    } // end of for () loop
+  text("elapsed time: " + timer.elapsedTime, width/2, 100); // show elapsed time
 
   if (keyIsPressed){
     switch(keyCode){
@@ -123,9 +149,10 @@ function mousePressed() {
  
   if (gameState == "splash") {
     gameState = "play"; // go to play screen
-    timer.start();
+    timer.start(); // start game timer
+    dropTimer.start();
   } else if (gameState == "play"){
-    gameState = "gameOver";
+    //gameState = "gameOver";
   } else if (gameState == "gameOver"){
     gameState = "splash";
   }
