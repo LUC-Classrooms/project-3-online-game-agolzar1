@@ -19,28 +19,61 @@ https://sakai.luc.edu/access/content/attachment/COMP_125_005_6466_1242/Assignmen
      * The translate() function (above, line 10) takes care of moving it on the canvas.
      * 
     */
-    let r = this.diam / 2; // radius
-    // 270 degrees (top):
-    let x1 = cos(PI + HALF_PI) * r; 
-    let y1 = sin(PI + HALF_PI) * r; 
-    // 30 degrees (bottom right):
-    let x2 = cos(PI / 6) * r;
-    let y2 = sin(PI / 6) * r;
-    // 150 degrees (bottom left): 
-    let x3 = cos(PI * 5 / 6) * r;
-    let y3 = sin(PI * 5 / 6) * r;
-    //draw the triangle:
-    //triangle(x1, y1, x2, y2, x3, y3);
-    //or draw a complex polygon
-    beginShape();
-    vertex(x1, y1);
-    vertex(x2, y2);
-    vertex(x3, y3);
-    endShape();
-    ellipse (x1, y1, 5);
-    // uncomment the next two lines to see the circle
-    // noFill();
-    // ellipse(0, 0, this.diam, this.diam);
+    scale (this.s);
+
+     //head 
+     strokeWeight (4);
+     fill(255);
+     ellipse (0 , 0 , 140 , 170);
+ 
+     scale (this.s);
+     //nose
+     fill (255, 192, 203);
+     ellipse (0, 35, 110 , 80)
+ 
+     //left eye 
+     strokeWeight (2);
+     fill (0);
+     ellipse (- 35 , - 45 , 30 , 40);
+ 
+     //right eye
+     ellipse (30  , - 45 , 30 , 40);
+ 
+    //top right circle on left eye
+     fill(204);
+     ellipse (- 30 , - 50 , 10 , 10);
+ 
+    //top right circle on left eye
+     ellipse (35 , - 50 , 10 , 10);
+ 
+    //middle circle on left eye
+     ellipse (- 45 , - 40 , 9 , 9);
+ 
+    //middle right circle on right eye
+     ellipse (20 , - 40 , 9, 9);
+
+     //bottom circle on left eye
+    ellipse (- 30 , - 35 , 8 , 8);
+
+    //bottom circle on right eye
+     ellipse (35 , - 35 , 8 , 8);
+ 
+   //right nostril
+     fill (0);
+     ellipse (30 , 35 , 20 , 30);
+ 
+   //left nostril
+     ellipse (-30  , 35 , 20 , 30);
+
+  // bottom left spot
+  fill (0);
+     ellipse (-55 , 0 , 30 , 35);
+
+  // right spot
+  fill (0);
+     ellipse (50 , -20 , 20 , 25);
+    
+
 
     pop(); // dispose of this layer
 

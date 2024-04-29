@@ -165,31 +165,3 @@ function mousePressed() {
   }
   console.log(gameState);
 }
-/*
-function keyPressed(){
-  switch(keyCode){
-    case UP_ARROW :
-      player1.y -= 30; // subtract 30 pixels from .y
-      player1.angle = 0;
-      if(player1.y < 0) player1.y = height;
-      break;
-    case DOWN_ARROW :
-      player1.y += 30;
-      player1.angle = PI;
-      if(player1.y > height) player1.y = 0;
-      break;
-    case LEFT_ARROW :
-      player1.x -= 30;
-      player1.angle = PI + HALF_PI;
-      if(player1.x < 0) player1.x = width;
-      break;
-    case RIGHT_ARROW :
-      player1.x += 30;
-      player1.angle = PI/2;
-      if(player1.x > width) player1.x = 0;
-      break;
-    default :
-      console.log ("use the arrow keys to move!");
-  }
-}
-*/
